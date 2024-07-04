@@ -21,14 +21,14 @@ public final class TestDataUtil {
         return Author.builder().id(3L).name("John D").age(30).build();
     }
 
-//    public static Book createBook() {
-//        return Book.builder().isbn("xd").title("Book Title").authorId(1L).build();
-//    }
-//    public static Book createBook2() {
-//        return Book.builder().isbn("xd2").title("Book Title").authorId(1L).build();
-//    }
-//    public static Book createBook3() {
-//        return Book.builder().isbn("xd3").title("Book Title").authorId(2L).build();
-//    }
+    public static Book createBook(Author author) {
+        return Book.builder().isbn("xd").title("Book Title").author(author).build();
+    }
+    public static Book createBook2(Author author) {
+        return Book.builder().isbn("xd2").title("Book Title").author(author).build();
+    }
+    public static Book createBook3(Author author) {
+        return Book.builder().isbn("xd3").title("Book Title").author(author).build();
+    }
 
 }
