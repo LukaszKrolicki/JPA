@@ -10,7 +10,9 @@ import javax.sql.DataSource;
 
 @SpringBootApplication
 @Log
+
 public class PostgreSqlApplication{
+
 
 
     public static void main(String[] args) {

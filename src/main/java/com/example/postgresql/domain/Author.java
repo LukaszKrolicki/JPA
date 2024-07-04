@@ -1,7 +1,14 @@
 package com.example.postgresql.domain;
 
+
 import jakarta.persistence.*;
 import lombok.*;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 
 @Data
 @AllArgsConstructor

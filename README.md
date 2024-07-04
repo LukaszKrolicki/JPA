@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 1. PostgreSQL Connection
 
 ![image](https://github.com/LukaszKrolicki/DAO/assets/54467678/a844e11c-27cb-454b-a8a0-1c93b945cb7d)
@@ -110,4 +111,6 @@ Integration Tests:
 
 
 
+=======
+>>>>>>> bc1f5c265bfb4848649e2e748b176d5e51c62676
 
