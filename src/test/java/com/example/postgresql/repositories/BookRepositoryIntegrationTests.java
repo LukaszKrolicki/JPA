@@ -59,25 +59,25 @@ public class BookRepositoryIntegrationTests {
 
         assertThat(result).hasSize(2).contains(book2, book3);
     }
-//
-//    @Test
-//    public void testUpdateBook(){
-//        Book book = TestDataUtil.createBook();
-//        Author author = TestDataUtil.createTestAuthor();
-//        Author author2=TestDataUtil.createTestAuthor2();
-//        authorRepository.create(author2);
-//        authorRepository.create(author);
-//        book.setAuthorId(author.getId());
-//        underTest.create(book);
-//        book.setAuthorId(2L);
-//        book.setTitle("New Title");
-//
-//        underTest.update(book, book.getIsbn());
-//
-//        Optional<Book> result = underTest.findOne(book.getIsbn());
-//        assertThat(result.isPresent()).isTrue();
-//        assertThat(result.get()).isEqualTo(book);
-//    }
+
+    @Test
+    public void testUpdateBook(){
+        Author author = TestDataUtil.createTestAuthor();
+        Book book = TestDataUtil.createBook(author);
+        Author author2=TestDataUtil.createTestAuthor2();
+        authorRepository.save(author2);
+        authorRepository.save(author);
+        book.setAuthor(author);
+        underTest.save(book);
+        book.setAuthor(author2);
+        book.setTitle("New Title");
+
+        underTest.save(book);
+
+        Optional<Book> result = underTest.findById(book.getIsbn());
+        assertThat(result.isPresent()).isTrue();
+        assertThat(result.get()).isEqualTo(book);
+    }
 //
 //    @Test
 //    public void testDeleteBook(){
