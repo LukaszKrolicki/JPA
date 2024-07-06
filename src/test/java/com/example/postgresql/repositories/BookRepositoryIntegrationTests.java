@@ -10,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
@@ -43,21 +44,21 @@ public class BookRepositoryIntegrationTests {
         assertThat(result.get()).isEqualTo(book);
     }
 
-//    @Test
-//    public void testThatMultpleBookCanBeCreatedAndRetrieved() {
-//        Book book2 = TestDataUtil.createBook2();
-//        Author author = TestDataUtil.createTestAuthor();
-//        authorRepository.create(author);
-//        underTest.create(book2);
-//        Author author2 = TestDataUtil.createTestAuthor2();
-//        authorRepository.create(author2);
-//        Book book3 = TestDataUtil.createBook3();
-//        underTest.create(book3);
-//
-//        List<Book> result = underTest.findMany();
-//
-//        assertThat(result).hasSize(2).contains(book2, book3);
-//    }
+    @Test
+    public void testThatMultpleBookCanBeCreatedAndRetrieved() {
+        Author author = TestDataUtil.createTestAuthor();
+        Book book2 = TestDataUtil.createBook2(author);
+        authorRepository.save(author);
+        underTest.save(book2);
+        Author author2 = TestDataUtil.createTestAuthor2();
+        authorRepository.save(author2);
+        Book book3 = TestDataUtil.createBook3(author2);
+        underTest.save(book3);
+
+        Iterable<Book> result = underTest.findAll();
+
+        assertThat(result).hasSize(2).contains(book2, book3);
+    }
 //
 //    @Test
 //    public void testUpdateBook(){

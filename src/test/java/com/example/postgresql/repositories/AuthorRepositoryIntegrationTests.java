@@ -9,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
@@ -37,18 +38,18 @@ public class AuthorRepositoryIntegrationTests {
         assertThat(result.get()).isEqualTo(author);
     }
 
-//    @Test
-//    public void testThatMultipleAuthorsCanBeRetrieved() {
-//        Author author = TestDataUtil.createTestAuthor();
-//        underTest.create(author);
-//        Author author2 = TestDataUtil.createTestAuthor2();
-//        underTest.create(author2);
-//        Author author3 = TestDataUtil.createTestAuthor3();
-//        underTest.create(author3);
-//
-//        List<Author> result = underTest.findMany();
-//        assertThat(result).hasSize(3).contains(author, author2, author3);
-//    }
+    @Test
+    public void testThatMultipleAuthorsCanBeRetrieved() {
+        Author author = TestDataUtil.createTestAuthor();
+        underTest.save(author);
+        Author author2 = TestDataUtil.createTestAuthor2();
+        underTest.save(author2);
+        Author author3 = TestDataUtil.createTestAuthor3();
+        underTest.save(author3);
+
+        Iterable<Author> result = underTest.findAll();
+        assertThat(result).hasSize(3).contains(author, author2, author3);
+    }
 //
 //
 //    @Test
